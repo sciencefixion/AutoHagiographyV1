@@ -1,7 +1,9 @@
 from fastapi import FastAPI, HTTPException
+
+from starlette.requests import Request
 from starlette.responses import JSONResponse
 
-from app.routers import users, journals, posts
+from app.routers import journals, passages
 
 app = FastAPI()
 
@@ -18,9 +20,8 @@ async def custom_http_exception_handler(request, exception: HTTPException):
     )
 
 # Import routers
-app.include_router(users.router)
 app.include_router(journals.router)
-app.include_router(posts.router)
+app.include_router(passages.router)
 
 @app.get("/")
 async def read_root():

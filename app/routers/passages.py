@@ -16,50 +16,55 @@ passage_database = {
     1: PassageModel(
         id=1,
         journal_id=1,
-        title="Passage 1",
-        content="Passage 1 goes here",
+        title="Veni Vidi MEci?",
+        content="Had a dream I was explaining the Roman Empire to my gf but I WAS the Roman Empire. Very demure, very mindful. Woke up feeling powerful.",
         created_at=datetime(2026, 1, 9, 10,35),
     ),
     2: PassageModel(
         id=2,
         journal_id=1,
-        title="Passage 2",
-        content="Passage 2 goes here",
+        title="Nightmare Therapy",
+        content="Dreamed my therapist said 'we're so back' then immediately followed with 'it's so over.' Spent rest of dream in emotional limbo." ,
         created_at=datetime(2026, 1, 9, 10,37),
     ),
     3: PassageModel(
         id=3,
-        journal_id=2,
-        title="Passage 3",
-        content="Passage 3 goes here",
+        journal_id=1,
+        title="Birds Not What They Seem",
+        content="In my dream, I was a bird identified in the wild. Someone pointed and yelled 'THE BIRDS WORK FOR THE BOURGEOISIE' and I woke up.",
         created_at=datetime(2026, 1, 9, 10,38),
     ),
     4: PassageModel(
         id=4,
         journal_id=2,
-        title="Passage 4",
-        content="Passage 4 goes here",
+        title="TODO Yesterday",
+        content="""-Crash out about minor inconvenience
+        - Touch grass
+        - Respond to texts from 3 weeks ago
+        - Eat hot chip and lie 
+        - Gaslight myself into productivity
+        - Be a professional hater for exactly 1 hour""",
         created_at=datetime(2026, 1, 9, 10,39),
     ),
     5: PassageModel(
         id=5,
         journal_id=3,
-        title="Passage 5",
-        content="Passage 5 goes here",
+        title="My Own Girl",
+        content="If I were a girl's girl but also just a girl, am I technically my own girl? This is the kind of math they don't teach you.",
         created_at=datetime(2026, 1, 9, 10,40),
     ),
     6: PassageModel(
         id=6,
         journal_id=3,
-        title="Passage 6",
-        content="Passage 6 goes here",
+        title="Payments",
+        content="When I was in school the teachers told me practice makes perfect; then they told me nobody’s perfect so I stopped practicing.",
         created_at=datetime(2026, 1, 9, 10,41),
     ),
     7: PassageModel(
         id=7,
         journal_id=3,
-        title="Passage 7",
-        content="Passage 7 goes here",
+        title="Widths",
+        content="A lot of people are afraid of heights. Not me, I’m afraid of widths.",
         created_at=datetime(2026, 1, 9, 10,42),
     )
 }
@@ -109,7 +114,11 @@ async def get_all_passages_from_journal(journal_id: int):
 
 # GET passage by id -
 @router.get("/journals/{journal_id}/passages/{passage_id}")
-async def get_passage(passage_id: int):
+async def get_passage(journal_id: int, passage_id: int):
+
+    # TODO check if getting journal may be useful in the future for this method, added journal_id above in case it needs to be passed in
+    # journal = await get_journal(journal_id)
+
     if passage_id in passage_database:
         return passage_database[passage_id]
     else:

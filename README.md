@@ -1,0 +1,1 @@
+The task of AutoHagiographyV1 was to create a journaling app that utilized basic CRUD operations with FastAPI. The app exposed 11 endpoints that respond to HTTP Requests. The endpoints use GET, POST, PUT, PATCH, and DELETE methods to perform the four basic operations of persistent storage: create, read, update, and delete.
